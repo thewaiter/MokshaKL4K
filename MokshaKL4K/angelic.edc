@@ -6,6 +6,10 @@
 //#########################################################
 //
 /*Agust*/
+
+#define NO_COLOR "#FFFFFF00"
+#define VISIBLE "#FFFFFF"
+
 #ifdef E17_PROFILE
 # if E17_PROFILE == LOWRES_PDA
 #  define SM "sm_"
