@@ -7,7 +7,6 @@ images.image: "systray_expand_vert.png" COMP;
 
 group { name: "e/modules/systray/main";
    alias: "e/modules/systray/main/default";
-   alias: "e/modules/systray/main/alternate";
    data.item: "default" "44 44 44 ";
    data.item: "inset" "45 45 45";
    data.item: "plain" "44 44 44";
@@ -187,6 +186,20 @@ programs {
          target: "expand_butt";
       }
    }
+}
+
+group { name: "e/modules/systray/main/alternate";
+     inherit: "e/modules/systray/main";
+   data.item: "default" "88 88 88";
+   data.item: "inset" "88 88 88";
+   data.item: "plain" "88 88 88";
+}
+
+group { name: "e/modules/systray/main/translucent";
+     inherit: "e/modules/systray/main";
+   data.item: "default" "24 24 24";
+   data.item: "inset" "24 24 24";
+   data.item: "plain" "24 24 24";
 }
 
 //Inset Systray
