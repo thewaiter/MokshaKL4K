@@ -1,24 +1,23 @@
 /////////////////////////////////////////////////////////////////////////////
    /*** TOOLBAR */
    group { name: "e/widgets/toolbar";
-
     parts {
-          part { name: "base"; type: RECT;
+        part { name: "base"; type: RECT;
             mouse_events: 1;
             description { state: "default" 0.0;
             }
-                }
+        }
         part { name: "line"; type: RECT;
-                mouse_events: 0;
-                description { state: "default" 0.0;
-                        rel1.to: "base";
-                        rel1.relative: 0.0 1.0;
-                        rel1.offset: 0 1;
-                        rel2.to: "base";
-                        rel2.relative: 1.0 1.0;
-                        min: 0 1; max: 99999 1;
-                        color: 235 235 235 255; 
-                }
+            mouse_events: 0;
+            description { state: "default" 0.0;
+               rel1.to: "base";
+               rel1.relative: 0.0 1.0;
+               rel1.offset: 0 1;
+               rel2.to: "base";
+               rel2.relative: 1.0 1.0;
+               min: 0 1; max: 99999 1;
+               color: 235 235 235 255; 
+            }
         }
          part { name: "clipper"; type: RECT;
             mouse_events: 0;
@@ -45,9 +44,10 @@
          }
      part { name: "left_arrow";
             mouse_events: 1;
-                        scale: 1;
+            scale: 1;
             description { state: "default" 0.0;
                image.normal: "e17_sb_btl1.png";
+               rel1.offset: -18 0;
                aspect: 1.0 1.0;
                aspect_preference: VERTICAL;
                align: 0.0 0.5;
@@ -62,9 +62,10 @@
          }
          part { name: "right_arrow";
             mouse_events: 1;
-                        scale: 1;
+            scale: 1;
             description { state: "default" 0.0;
                image.normal: "e17_sb_btr1.png";
+               rel2.offset: 18 0;
                aspect: 1.0 1.0;
                aspect_preference: VERTICAL;
                align: 1.0 0.5;
