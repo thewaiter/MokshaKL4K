@@ -99,65 +99,63 @@ group { name: "e/widgets/border/default/border";
 			}
 		}
 		part { name: "e.text.title"; type: TEXT;
-            mouse_events: 0;
-            scale: 1;
-            description {
-               state: "default" 0.0;
-               visible: 1;
-               align: 0.0 0.0;
-               rel1.offset: 0 2;
-               rel2 {
-                  relative: 1.0 0.0;
-                  offset: 0 0;
-                  to_x: "title_base";
-               }
-               color_class: "border_title";
-               text {
-                  font: "Play-Bold";
-                  size: 13;
-                  min: 0 1;
-                  align: 0.5 0.0;
-                  text_class: "title_bar";
-               }
-            }
+			mouse_events: 0;
+			scale: 1;
+			description { state: "default" 0.0;
+				visible: 1;
+				align: 0.0 0.0;
+				rel1.offset: 0 2;
+				rel2 {
+				    relative: 1.0 0.0;
+				    offset: 0 0;
+				    to_x: "title_base";
+				}
+				color_class: "border_title";
+				text {
+				    font: "Play-Bold";
+				    size: 13;
+				    min: 0 1;
+				    align: 0.5 0.0;
+				    text_class: "title_bar";
+				}
+			}
 		}
-		
 		part { name: "title_base"; type: RECT;
-            mouse_events: 0;
-            description {
-			   align: 0.0 0.5;
-               state: "default" 0.0;
-               visible: 0;
-               rel2 {
-                  relative: 0.0 1.0;
-                  offset: -3 -1;
-                  to_y: "e.text.title";
-                  to_x: "bt_minimize";
-               }
-            }
-        }
-        image { name: "top_bg"; nomouse;
-         scale: 1;
-         desc { "default";
-			align:    0.0 0.0;
-			aspect:   1.0 1.0;
-			aspect_preference: VERTICAL;
-            image.normal: "bg-top-rounded-1px@2.png";
-            rel1 {
-	        relative: 0.0  0.0;
-	        offset:   -1  -1;
-	        to_x:     "title_base";
-	        }
-	        rel2 {
-	        relative: 0.0  1.0;
-	        offset:   0  0;
-	        to_y:     "titlebar";
-	        }
-            color_class: "border_frame";
-            fill.smooth: 0;
-         }
-      }
-        part { name: "bt_close"; type: IMAGE;
+			mouse_events: 0;
+			description {
+				align: 0.0 0.5;
+				state: "default" 0.0;
+				visible: 0;
+				rel2 {
+				    relative: 0.0 1.0;
+				    offset: -3 -1;
+				    to_y: "e.text.title";
+				    to_x: "bt_minimize";
+				}
+			}
+		}
+		image { name: "top_bg"; nomouse;
+			scale: 1;
+			desc { "default";
+				align: 0.0 0.0;
+				aspect:   1.0 1.0;
+				aspect_preference: VERTICAL;
+				image.normal: "bg-top-rounded-1px@2.png";
+				rel1 {
+				    relative: 0.0  0.0;
+				    offset:   -1  -1;
+				    to_x:     "title_base";
+				}
+				rel2 {
+				    relative: 0.0  1.0;
+				    offset:   0  0;
+				    to_y:     "titlebar";
+				    }
+				color_class: "border_frame";
+				fill.smooth: 0;
+			}
+		}
+		part { name: "bt_close"; type: IMAGE;
 			description {
 				align: 0.0 0.5;
 				state: "default" 0.0;
@@ -180,8 +178,8 @@ group { name: "e/widgets/border/default/border";
 				inherit: "default" 0.0;
 				image.normal: "winbt/close_focused_pressed.png";
 			}
-        }
-        part { name: "bt_maximize"; type: IMAGE;
+	}
+		part { name: "bt_maximize"; type: IMAGE;
 			description {
 				align: 0.0 0.5;
 				state: "default" 0.0;
@@ -204,7 +202,7 @@ group { name: "e/widgets/border/default/border";
 				inherit: "default" 0.0;
 				image.normal: "winbt/maximize_focused_pressed.png";
 			}
-        }
+		}
         
 part { name: "icon"; type: SPACER;
          description { state: "default" 0.0;
@@ -272,133 +270,126 @@ part { name: "icon"; type: SPACER;
         
         //EVENTS  
 		part { name: "e.event.titlebar"; type: RECT;
-			 description { state: "default" 0.0;
+			description { state: "default" 0.0;
 				rel1.to: "titlebar";
 				rel2.to: "titlebar";
 				color: 0 0 0 0;
-			 }
-		  }
+			}
+		}
 		  
-		  part { name: "client_clip"; type: RECT; mouse_events: 0;
-         description { state: "default" 0.0;
-            rel1.to_y: "e.swallow.client";
-            rel2.to_y: "e.swallow.client";
-         }
-         description { state: "hidden" 0.0;
-            inherit: "default";
-            visible: 0;
-         }
-      }
-		  
-		 part { name: "e.swallow.client"; type: SWALLOW;
-         clip_to: "client_clip";
-         description { state: "default" 0.0;
-            rel1.relative: 0.0 1.0;
-            rel1.to_y: "titlebar";
-            rel1.offset: 1 0;
-            rel2.relative: 1.0 0.0;
-            rel2.to_y: "bottom";
-            rel2.offset: -2 0;
-         }
-         description { state: "shaded" 0.0;
-            inherit: "default" 0.0;
-            rel2.relative: 1.0 1.0;
-            rel2.offset: -1 -1;
-         }
-         description { state: "max" 0.0;
-            inherit: "default" 0.0;
-            rel2.relative: 1.0 1.0;
-            rel2.offset: -1 -1;
-         }
-      }
-				
-		 part { name: "bottom"; type: RECT; mouse_events: 0;
-         description { state: "default" 0.0;
-            rel1.relative: 0.0 1.0;
-            rel1.offset: 0 -5;
-            rel2.relative: 1.0 1.0;
-            color: 203 203 203 255;
-            min: 0 5;
-         }
-         description { state: "shaded" 0.0;
-            inherit: "default" 0.0;
-            rel1.offset: 0 0;
-            min: 0 0;
-            visible: 0;
-         }
-         description { state: "max" 0.0;
-            inherit: "default" 0.0;
-            min: 0 0;
-            visible: 0;
-         }
-      }
-      part { name: "bevel2"; mouse_events: 0;
-         description { state: "default" 0.0;
-            image.normal: "images/bevel_dark_out.png";
-            image.border: 1 1 1 1;
-            image.middle: 0;
-            rel1.to: "bottom";
-            rel2.to: "bottom";
-            fill.smooth: 0;
-         }
-         description { state: "shaded" 0.0;
-            inherit: "default" 0.0;
-            visible: 0;
-         }
-         description { state: "max" 0.0;
-            inherit: "default" 0.0;
-            visible: 0;
-         }
-      }
-      
-         part { name: "left"; type: RECT; mouse_events: 0;
+		part { name: "client_clip"; type: RECT; mouse_events: 0;
 			description { state: "default" 0.0;
-            rel1.relative: 0.0 0.0;
-            rel1.offset: 0 25;
-            rel2.relative: 0.0 1.0;
-            rel2.offset:  1 0;
-            color: 220 220 220 200;
-            min: 1 9999;
-         }
-	 }
-	 
-	    part { name: "left_up"; type: RECT; mouse_events: 0;
-			description { state: "default" 0.0;
-            rel1.relative: 0.0 0.0;
-            rel1.offset: 0 0;
-            rel2.relative: 0.0 0.0;
-            rel2.offset:  1 25;
-            color: 45 45 45 255;
-            min: 1 25;
-            max : 2 25;
-         }
-	 }
-	 
-	 
-	 
-	    part { name: "right"; type: RECT; mouse_events: 0;
-			description { state: "default" 0.0;
-            rel1.relative: 1.0 0.0;
-            rel1.offset: 0 0;
-            rel2.relative: 1.0 1.0;
-            rel2.offset:  -1 0;
-            color: 220 220 220 200;
-            min: 1 9999;
-         }
-	 }
-	  part { name: "right_up"; type: RECT; mouse_events: 0;
-			description { state: "default" 0.0;
-            rel1.relative: 1.0 0.0;
-            rel1.offset: 0 0;
-            rel2.relative: 1.0 0.0;
-            rel2.offset:  -1 25;
-            color: 45 45 45 255;
-            min: 1 25;
-            max: 1 25;
-         }
-	 }
-	 
+				rel1.to_y: "e.swallow.client";
+				rel2.to_y: "e.swallow.client";
+			}
+			description { state: "hidden" 0.0;
+				inherit: "default";
+				visible: 0;
+			}
+		}
 		
+		part { name: "e.swallow.client"; type: SWALLOW;
+			clip_to: "client_clip";
+			description { state: "default" 0.0;
+				rel1.relative: 0.0 1.0;
+				rel1.to_y: "titlebar";
+				rel1.offset: 1 0;
+				rel2.relative: 1.0 0.0;
+				rel2.to_y: "bottom";
+				rel2.offset: -2 0;
+		}
+			description { state: "shaded" 0.0;
+				inherit: "default" 0.0;
+				rel2.relative: 1.0 1.0;
+				rel2.offset: -1 -1;
+			}
+			description { state: "max" 0.0;
+				inherit: "default" 0.0;
+				rel2.relative: 1.0 1.0;
+				rel2.offset: -1 -1;
+			}
+		}
+		part { name: "bottom"; type: RECT; mouse_events: 0;
+			description { state: "default" 0.0;
+				rel1.relative: 0.0 1.0;
+				rel1.offset: 0 -5;
+				rel2.relative: 1.0 1.0;
+				color: 203 203 203 255;
+				min: 0 5;
+			}
+			description { state: "shaded" 0.0;
+				inherit: "default" 0.0;
+				rel1.offset: 0 0;
+				min: 0 0;
+				visible: 0;
+			}
+			description { state: "max" 0.0;
+				inherit: "default" 0.0;
+				min: 0 0;
+				visible: 0;
+			}
+		}
+		part { name: "bevel2"; mouse_events: 0;
+			description { state: "default" 0.0;
+				image.normal: "images/bevel_dark_out.png";
+				image.border: 1 1 1 1;
+				image.middle: 0;
+				rel1.to: "bottom";
+				rel2.to: "bottom";
+				fill.smooth: 0;
+			}
+			description { state: "shaded" 0.0;
+				inherit: "default" 0.0;
+				visible: 0;
+			}
+			description { state: "max" 0.0;
+				inherit: "default" 0.0;
+				visible: 0;
+			}
+		}
+		part { name: "left"; type: RECT; mouse_events: 0;
+			description { state: "default" 0.0;
+				rel1.relative: 0.0 0.0;
+				rel1.offset: 0 25;
+				rel2.relative: 0.0 1.0;
+				rel2.offset:  1 0;
+				color: 220 220 220 200;
+				min: 1 9999;
+			}
+		}
+	 
+		part { name: "left_up"; type: RECT; mouse_events: 0;
+			description { state: "default" 0.0;
+				rel1.relative: 0.0 0.0;
+				rel1.offset: 0 0;
+				rel2.relative: 0.0 0.0;
+				rel2.offset:  1 25;
+				color: 45 45 45 255;
+				min: 1 25;
+				max : 2 25;
+			}
+		}
+		part { name: "right"; type: RECT; mouse_events: 0;
+			description { state: "default" 0.0;
+				rel1.relative: 1.0 0.0;
+				rel1.offset: 0 0;
+				rel2.relative: 1.0 1.0;
+				rel2.offset:  -1 0;
+				color: 220 220 220 200;
+				min: 1 9999;
+			}
+		}
+		part { name: "right_up"; type: RECT; mouse_events: 0;
+			description { state: "default" 0.0;
+				rel1.relative: 1.0 0.0;
+				rel1.offset: 0 0;
+				rel2.relative: 1.0 0.0;
+				rel2.offset:  -1 25;
+				color: 45 45 45 255;
+				min: 1 25;
+				max: 1 25;
+			}
+		}
 		WIN_BT_EVENTS("close")
 		WIN_BT_EVENTS("maximize")
 		WIN_BT_EVENTS("minimize")
@@ -409,51 +400,51 @@ part { name: "icon"; type: SPACER;
 		OVER("bt_maximize","e.event.maximize","default","prelight")
 		OVER("bt_minimize","e.event.minimize","default","prelight")
 		program {
-         signal: "mouse,down,*"; source: "e.event.close";
-         action: STATE_SET "pressed" 0.0;
-         target: "bt_close";
-      }
+			signal: "mouse,down,*"; source: "e.event.close";
+			action: STATE_SET "pressed" 0.0;
+			target: "bt_close";
+		}
 		program {
-         signal: "mouse,up,*"; source: "e.event.close";
-         action: STATE_SET "default" 0.0;
-         target: "bt_close";
-      }
-      program {
-         signal: "mouse,down,*"; source: "e.event.minimize";
-         action: STATE_SET "pressed" 0.0;
-         target: "bt_minimize";
-      }
+			signal: "mouse,up,*"; source: "e.event.close";
+			action: STATE_SET "default" 0.0;
+			target: "bt_close";
+		}
 		program {
-         signal: "mouse,up,*"; source: "e.event.minimize";
-         action: STATE_SET "default" 0.0;
-         target: "bt_minimize";
-      }
-      program {
-         signal: "mouse,down,*"; source: "e.event.maximize";
-         action: STATE_SET "pressed" 0.0;
-         target: "bt_maximize";
-      }
+			signal: "mouse,down,*"; source: "e.event.minimize";
+			action: STATE_SET "pressed" 0.0;
+			target: "bt_minimize";
+		}
 		program {
-         signal: "mouse,up,*"; source: "e.event.maximize";
-         action: STATE_SET "default" 0.0;
-         target: "bt_maximize";
-      }
-      program {
-         signal: "e,state,shaded";
-         source: "e";
-         action: STATE_SET "shaded" 0.0;
-         target: "bottom";
-         target: "bevel2";
-         //~ target: "e.text.title";
-      }
-      program {
-         signal: "e,state,unshaded";
-         source: "e";
-         action: STATE_SET "default" 0.0;
-         target: "bottom";
-         target: "bevel2";
-         //~ target: "e.text.title";
-      }
+			signal: "mouse,up,*"; source: "e.event.minimize";
+			action: STATE_SET "default" 0.0;
+			target: "bt_minimize";
+		}
+		program {
+			signal: "mouse,down,*"; source: "e.event.maximize";
+			action: STATE_SET "pressed" 0.0;
+			target: "bt_maximize";
+		}
+		program {
+			signal: "mouse,up,*"; source: "e.event.maximize";
+			action: STATE_SET "default" 0.0;
+			target: "bt_maximize";
+		}
+		program {
+			signal: "e,state,shaded";
+			source: "e";
+			action: STATE_SET "shaded" 0.0;
+			target: "bottom";
+			target: "bevel2";
+		     //~ target: "e.text.title";
+		}
+		program {
+			signal: "e,state,unshaded";
+			source: "e";
+			action: STATE_SET "default" 0.0;
+			target: "bottom";
+			target: "bevel2";
+		     //~ target: "e.text.title";
+		}
 	}
 }
 
@@ -468,52 +459,48 @@ group { name: "e/widgets/border/left_controls/border";
 				//~ rel2.to_y: "title_base";
 				rel2.to_x: "e.event.icon"; 
 				rel2.relative: 1.0 1.0;
-				color: 255 255 255 255;
 				color_class: "border_frame";
 			}
 		}
 		part { name: "e.text.title"; type: TEXT;
-            mouse_events: 0;
-            scale: 1;
-            description {
-               state: "default" 0.0;
-               visible: 1;
-               align: 0.0 0.0;
-               rel1.offset: 0 2;
-               rel2 {
-                  relative: 1.0 0.0;
-                  offset: 0 0;
-                  to_x: "title_base";
-               }
-               color_class: "border_title";
-               text {
-                  font: "Play-Bold";
-                  size: 13;
-                  min: 0 1;
-                  align: 0.5 0.0;
-                  text_class: "title_bar";
-               }
-            }
+			mouse_events: 0;
+			scale: 1;
+			description {
+				state: "default" 0.0;
+				visible: 1;
+				align: 0.0 0.0;
+				rel1.offset: 0 2;
+				rel1.to_x: "bt_minimize";
+				rel1.relative: 1.0 0.0;
+				rel2.relative: 1.0 0.0;
+				rel2.offset: 0 0;
+				color_class: "border_title";
+				text {
+				    font: "Play-Bold";
+				    size: 13;
+				    min: 0 1;
+				    align: 0.5 0.0;
+				    text_class: "title_bar";
+				}
+			}
 		}
-		
 		part { name: "title_base"; type: RECT;
-            mouse_events: 0;
-            description {
-			   align: 0.0 0.5;
-               state: "default" 0.0;
-               visible: 0;
-               color: 255 0 0 0;
-               rel1.relative: 0.0 0.0;
-               rel2.to_x: "e.event.icon";
-               rel2 {
-				   
-                  relative: 1.0 1.0;
-                  offset: -23 -1;
-                  to_y: "e.text.title";
-                  to_x: "e.event.icon";
-               }
-            }
-        }
+			mouse_events: 0;
+			description {
+				align: 0.0 0.5;
+				state: "default" 0.0;
+				visible: 0;
+				color: 255 0 0 0;
+				rel1.relative: 0.0 0.0;
+				rel2.to_x: "e.event.icon";
+				rel2 {
+				    relative: 1.0 1.0;
+				    offset: -23 -1;
+				    to_y: "e.text.title";
+				    to_x: "e.event.icon";
+				}
+			}
+		}
 		part { name: "bt_close"; type: IMAGE;
 			description {
 				align: 0.0 0.5;
@@ -534,8 +521,8 @@ group { name: "e/widgets/border/left_controls/border";
 				inherit: "default" 0.0;
 				image.normal: "winbt/close_focused_pressed.png";
 			}
-        }
-        part { name: "bt_maximize"; type: IMAGE;
+		}
+		part { name: "bt_maximize"; type: IMAGE;
 			description {
 				align: 0.0 0.5;
 				state: "default" 0.0;
@@ -557,9 +544,8 @@ group { name: "e/widgets/border/left_controls/border";
 				inherit: "default" 0.0;
 				image.normal: "winbt/maximize_focused_pressed.png";
 			}
-        }
-        
-         part { name: "bt_minimize"; type: IMAGE;
+		}
+		part { name: "bt_minimize"; type: IMAGE;
 			description {
 				align: 0.0 0.5;
 				state: "default" 0.0;
@@ -581,33 +567,30 @@ group { name: "e/widgets/border/left_controls/border";
 				inherit: "default" 0.0;
 				image.normal: "winbt/minimize_focused_pressed.png";
 			}
-        }
-        
-        
+		}
 		part { name: "e.event.titlebar"; type: RECT;
-			 description { state: "default" 0.0;
+			description { state: "default" 0.0;
 				rel1.to: "bt_minimize";
 				rel2.relative: 0.9 1.0;
 				rel2.to_x: "e.event.icon";
 				rel2.offset: -20 0;
 				rel2.to_y: "top_bg";
 				color: 0 0 0 0;
-			 }
-		  } 
-		  
-		 part { name: "e.event.icon"; type: RECT;
-         description { state: "default" 0.0;
-            fixed: 1 0;
-            rel1.relative: 1.0 0.0;
-            rel1.offset: 0 0;
-            rel2.relative: 1.0 1.0;
-            rel2.to_y: "top_bg";
-            align: 1.0 1.0;
-            aspect: 1.0 1.0; aspect_preference: VERTICAL;
-            color: 0 0 0 0;
-         }
-      }
-      }
+			}
+		}
+		part { name: "e.event.icon"; type: RECT;
+			description { state: "default" 0.0;
+				fixed: 1 0;
+				rel1.relative: 1.0 0.0;
+				rel1.offset: 0 0;
+				rel2.relative: 1.0 1.0;
+				rel2.to_y: "top_bg";
+				align: 1.0 1.0;
+				aspect: 1.0 1.0; aspect_preference: VERTICAL;
+				color: 0 0 0 0;
+			}
+		}
+	}
 }
 
 group { name: "e/widgets/border/noresize/border";
@@ -638,43 +621,43 @@ group { name: "e/widgets/border/noresize/border";
 			}
 		}
 		part { name: "e.text.title"; type: TEXT;
-            mouse_events: 0;
-            scale: 1;
-            description {
-               state: "default" 0.0;
-               visible: 1;
-               align: 0.0 0.0;
-               rel1.offset: 0 2;
-               rel2 {
-                  relative: 1.0 0.0;
-                  offset: 0 0;
-                  to_x: "title_base";
-               }
-               color_class: "border_title";
-               text {
-                  font: "Play-Bold";
-                  size: 13;
-                  min: 0 1;
-                  align: 0.5 0.0;
-                  text_class: "title_bar";
-               }
-            }
+			mouse_events: 0;
+			scale: 1;
+			description {
+				state: "default" 0.0;
+				visible: 1;
+				align: 0.0 0.0;
+				rel1.offset: 0 2;
+				rel2 {
+				    relative: 1.0 0.0;
+				    offset: 0 0;
+				    to_x: "title_base";
+				}
+				color_class: "border_title";
+				text {
+				    font: "Play-Bold";
+				    size: 13;
+				    min: 0 1;
+				    align: 0.5 0.0;
+				    text_class: "title_bar";
+				}
+			}
 		}
 		part { name: "title_base"; type: RECT;
-            mouse_events: 0;
-            description {
+			mouse_events: 0;
+			description {
 				align: 0.0 0.5;
-               state: "default" 0.0;
-               visible: 0;
-               rel2 {
-                  relative: 0.0 1.0;
-                  offset: -3 -1;
-                  to_y: "e.text.title";
-                  to_x: "bt_minimize";
-               }
-            }
-        }
-        part { name: "bt_close"; type: IMAGE;
+				state: "default" 0.0;
+				visible: 0;
+				rel2 {
+				    relative: 0.0 1.0;
+				    offset: -3 -1;
+				    to_y: "e.text.title";
+				    to_x: "bt_minimize";
+				}
+			}
+		}
+		part { name: "bt_close"; type: IMAGE;
 			description {
 				align: 0.0 0.5;
 				state: "default" 0.0;
@@ -697,8 +680,8 @@ group { name: "e/widgets/border/noresize/border";
 				inherit: "default" 0.0;
 				image.normal: "winbt/close_focused_pressed.png";
 			}
-        }
-        part { name: "bt_maximize"; type: IMAGE;
+	}
+		part { name: "bt_maximize"; type: IMAGE;
 			description {
 				align: 0.0 0.5;
 				state: "default" 0.0;
@@ -721,8 +704,8 @@ group { name: "e/widgets/border/noresize/border";
 				inherit: "default" 0.0;
 				image.normal: "winbt/maximize_focused_pressed.png";
 			}
-        }
-        part { name: "bt_minimize"; type: IMAGE;
+	}
+		part { name: "bt_minimize"; type: IMAGE;
 			description {
 				align: 0.0 0.5;
 				state: "default" 0.0;
@@ -745,7 +728,7 @@ group { name: "e/widgets/border/noresize/border";
 				inherit: "default" 0.0;
 				image.normal: "winbt/minimize_focused_pressed.png";
 			}
-        }
+	}
         //EVENTS  
 		part { name: "e.event.titlebar"; type: RECT;
 			 description { state: "default" 0.0;
@@ -771,35 +754,35 @@ group { name: "e/widgets/border/noresize/border";
 		OVER("bt_maximize","e.event.maximize","default","prelight")
 		OVER("bt_minimize","e.event.minimize","default","prelight")
 		program {
-         signal: "mouse,down,*"; source: "e.event.close";
-         action: STATE_SET "pressed" 0.0;
-         target: "bt_close";
-      }
+			signal: "mouse,down,*"; source: "e.event.close";
+			action: STATE_SET "pressed" 0.0;
+			target: "bt_close";
+		}
 		program {
-         signal: "mouse,up,*"; source: "e.event.close";
-         action: STATE_SET "default" 0.0;
-         target: "bt_close";
-      }
-      program {
-         signal: "mouse,down,*"; source: "e.event.minimize";
-         action: STATE_SET "pressed" 0.0;
-         target: "bt_minimize";
-      }
+			signal: "mouse,up,*"; source: "e.event.close";
+			action: STATE_SET "default" 0.0;
+			target: "bt_close";
+		}
 		program {
-         signal: "mouse,up,*"; source: "e.event.minimize";
-         action: STATE_SET "default" 0.0;
-         target: "bt_minimize";
-      }
-      program {
-         signal: "mouse,down,*"; source: "e.event.maximize";
-         action: STATE_SET "pressed" 0.0;
-         target: "bt_maximize";
-      }
+			signal: "mouse,down,*"; source: "e.event.minimize";
+			action: STATE_SET "pressed" 0.0;
+			target: "bt_minimize";
+		}
 		program {
-         signal: "mouse,up,*"; source: "e.event.maximize";
-         action: STATE_SET "default" 0.0;
-         target: "bt_maximize";
-      }
+			signal: "mouse,up,*"; source: "e.event.minimize";
+			action: STATE_SET "default" 0.0;
+			target: "bt_minimize";
+		}
+		program {
+			signal: "mouse,down,*"; source: "e.event.maximize";
+			action: STATE_SET "pressed" 0.0;
+			target: "bt_maximize";
+		}
+		program {
+			signal: "mouse,up,*"; source: "e.event.maximize";
+			action: STATE_SET "default" 0.0;
+			target: "bt_maximize";
+		}
 	}
 }
 
@@ -826,43 +809,42 @@ group { name: "e/widgets/border/dialog/border";
 			}
 		}
 		part { name: "e.text.title"; type: TEXT;
-            mouse_events: 0;
-            scale: 1;
-            description {
-               state: "default" 0.0;
-               visible: 1;
-               align: 0.0 0.0;
-               rel1.offset: 0 2;
-               rel2 {
-                  relative: 1.0 0.0;
-                  offset: 0 0;
-                  to_x: "title_base";
-               }
-               color_class: "border_title";
-               text {
-                  font: "Play-Bold";
-                  size: 13;
-                  min: 0 1;
-                  align: 0.5 0.0;
-                  text_class: "title_bar";
-               }
-            }
+			mouse_events: 0;
+			scale: 1;
+			description { state: "default" 0.0;
+				visible: 1;
+				align: 0.0 0.0;
+				rel1.offset: 0 2;
+				rel2 {
+				    relative: 1.0 0.0;
+				    offset: 0 0;
+				    to_x: "title_base";
+			       }
+			       color_class: "border_title";
+			       text {
+				    font: "Play-Bold";
+				    size: 13;
+				    min: 0 1;
+				    align: 0.5 0.0;
+				    text_class: "title_bar";
+				}
+			}
 		}
 		part { name: "title_base"; type: RECT;
-            mouse_events: 0;
-            description {
+			mouse_events: 0;
+			description {
 				align: 0.0 0.5;
-               state: "default" 0.0;
-               visible: 0;
-               rel2 {
-                  relative: 0.0 1.0;
-                  offset: -3 -1;
-                  to_y: "e.text.title";
-                  to_x: "bt_close";
-               }
-            }
-        }
-        part { name: "bt_close"; type: IMAGE;
+				state: "default" 0.0;
+				visible: 0;
+				rel2 {
+				    relative: 0.0 1.0;
+				    offset: -3 -1;
+				    to_y: "e.text.title";
+				    to_x: "bt_close";
+				}
+			}
+		}
+		part { name: "bt_close"; type: IMAGE;
 			description {
 				align: 0.0 0.5;
 				state: "default" 0.0;
@@ -910,15 +892,15 @@ group { name: "e/widgets/border/dialog/border";
 	programs {
 		OVER("bt_close","e.event.close","default","prelight")
 		program {
-         signal: "mouse,down,*"; source: "e.event.close";
-         action: STATE_SET "pressed" 0.0;
-         target: "bt_close";
-      }
+			signal: "mouse,down,*"; source: "e.event.close";
+			action: STATE_SET "pressed" 0.0;
+			target: "bt_close";
+		}
 		program {
-         signal: "mouse,up,*"; source: "e.event.close";
-         action: STATE_SET "default" 0.0;
-         target: "bt_close";
-      }
+			signal: "mouse,up,*"; source: "e.event.close";
+			action: STATE_SET "default" 0.0;
+			target: "bt_close";
+		}
 	}
 }
 
@@ -944,43 +926,43 @@ group { name: "e/widgets/border/noresize_dialog/border";
 			}
 		}
 		part { name: "e.text.title"; type: TEXT;
-            mouse_events: 0;
-            scale: 1;
-            description {
-               state: "default" 0.0;
-               visible: 1;
-               align: 0.0 0.0;
-               rel1.offset: 0 2;
-               rel2 {
-                  relative: 1.0 0.0;
-                  offset: 0 0;
-                  to_x: "title_base";
-               }
-               color_class: "border_title";
-               text {
-                  font: "Play-Bold";
-                  size: 13;
-                  min: 0 1;
-                  align: 0.5 0.0;
-                  text_class: "title_bar";
-               }
-            }
+			mouse_events: 0;
+			scale: 1;
+			description {
+				state: "default" 0.0;
+				visible: 1;
+				align: 0.0 0.0;
+				rel1.offset: 0 2;
+				rel2 {
+				    relative: 1.0 0.0;
+				    offset: 0 0;
+				    to_x: "title_base";
+				}
+				color_class: "border_title";
+				text {
+				    font: "Play-Bold";
+				    size: 13;
+				    min: 0 1;
+				    align: 0.5 0.0;
+				    text_class: "title_bar";
+				}
+			}
 		}
 		part { name: "title_base"; type: RECT;
-            mouse_events: 0;
-            description {
+			mouse_events: 0;
+			description {
 				align: 0.0 0.5;
-               state: "default" 0.0;
-               visible: 0;
-               rel2 {
-                  relative: 0.0 1.0;
-                  offset: -3 -1;
-                  to_y: "e.text.title";
-                  to_x: "bt_close";
-               }
-            }
-        }
-        part { name: "bt_close"; type: IMAGE;
+				state: "default" 0.0;
+				visible: 0;
+				rel2 {
+				    relative: 0.0 1.0;
+				    offset: -3 -1;
+				    to_y: "e.text.title";
+				    to_x: "bt_close";
+				}
+			}
+		}
+		part { name: "bt_close"; type: IMAGE;
 			description {
 				align: 0.0 0.5;
 				state: "default" 0.0;
@@ -1027,15 +1009,15 @@ group { name: "e/widgets/border/noresize_dialog/border";
 	programs {
 		OVER("bt_close","e.event.close","default","prelight")
 		program {
-         signal: "mouse,down,*"; source: "e.event.close";
-         action: STATE_SET "pressed" 0.0;
-         target: "bt_close";
-      }
+			signal: "mouse,down,*"; source: "e.event.close";
+			action: STATE_SET "pressed" 0.0;
+			target: "bt_close";
+		}
 		program {
-         signal: "mouse,up,*"; source: "e.event.close";
-         action: STATE_SET "default" 0.0;
-         target: "bt_close";
-      }
+			signal: "mouse,up,*"; source: "e.event.close";
+			action: STATE_SET "default" 0.0;
+			target: "bt_close";
+		}
 	}
 }
 
