@@ -123,5 +123,6 @@ collections {
 #include "mokshapreview.edc"
 #include "angelic_notification.edc"
 #include "angelic_xkbswitch.edc"
+#include "angelic_edgebindings.edc"
 }
 
