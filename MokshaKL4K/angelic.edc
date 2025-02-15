@@ -124,5 +124,6 @@ collections {
 #include "angelic_notification.edc"
 #include "angelic_xkbswitch.edc"
 #include "angelic_edgebindings.edc"
+#include "angelic_wallpaper.edc"
 }
 
