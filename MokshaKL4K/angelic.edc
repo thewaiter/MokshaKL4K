@@ -43,6 +43,7 @@ spectra {
 }
 #endif
 
+efl_version: 1 25;
 data
  {
    item: "theme/name"     "KL4K";
@@ -51,6 +52,7 @@ data
    item: "theme/version"  "V-2";
    item: "theme/author"   "Agustin J Verdegal T.";
    item: "theme/license"  "Theme: Custom;Font: Bitstream Vera fonts";
+   item: "version"        "125";  
 }
 
 collections {
