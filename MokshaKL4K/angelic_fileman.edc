@@ -6615,6 +6615,7 @@ group {
    type:          TEXT;
    effect:        SOFT_SHADOW;
    mouse_events:  0;
+   scale: 1;
    description {
       state: "default" 0.0;
       align: 0.5 1.0;
@@ -6628,15 +6629,15 @@ group {
          offset:   -9 -9;
       }
       color: 255 255 255 255;
-      color3: 51 51 51 24;
+      color3: 51 51 51 64;
       color_class: "desktop_label_text";
       text {
          text:     "No Title";
-         size:     10;
+         size:     9;
          font:     "Edje-Vera-Bold";
          min:      0 1;
          align:    0.5 1.0;
-         ellipsis: -1;
+         //~ ellipsis: -1;
          text_class: "desktop_fileman_icon";
       }
    }
