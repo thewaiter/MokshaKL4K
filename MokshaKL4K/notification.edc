@@ -16,7 +16,7 @@
          tag: "u" ""; /* No underline, just in case */
       }
       style { name: "notification_body_style";
-         base: "font=Play-Regular.ttf font_size=10 align=center color=#FFFFFF wrap=word text_class=notification_body";
+         base: "font=Play-Regular.ttf font_size=10 align=left color=#FFFFFF wrap=word text_class=notification_body";
          tag: "b" "+ font=Play-Regular.ttf:style=Bold";
          tag: "i" "+ font=Play-Regular.ttf:style=Italic";
       }
@@ -28,6 +28,7 @@
          description {
             state: "default" 0.0;
             image.normal: "bd_white_border.png";
+			image.border: 15 15 15 15; /* Border edges in size 15 won't scale */
             fill.smooth: 1;
             rel1.relative: 0.0 0.0; /* Covers the entire area */
             rel2.relative: 1.0 1.0;   
