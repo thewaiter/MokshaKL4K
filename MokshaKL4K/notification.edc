@@ -64,7 +64,7 @@
             rel2.relative: 1.0 0.0;
             rel2.offset: -48 32;
             align: 0.0 0.0;
-            min: 220 26;
+			min: 180 1;		
             text {
               style: "notification_title_style";
               align: 0.0 0.5;
@@ -87,7 +87,7 @@
             rel2.to_y: "notification.swallow.actions";
             rel2.relative: 1.0 0.0;
             rel2.offset: -16 -9; /* small gap between text and buttons */
-            min: 220 30;
+			min: 180 1;			
             text {
               style: "notification_body_style";
               text: "";
@@ -145,14 +145,15 @@
            rel1.relative: 1.0 1.0;
            rel1.offset: 12 -52;
            rel2.relative: 1.0 1.0;
-           rel2.offset: -12 -12;
-           min: 0 0; /* no space taken if hidden */
+           rel2.offset: -36 -12;
+	       min: 0 0;  /* no space taken if hidden */
         }
         description {
           state: "visible" 0.0;
           inherit: "default" 0.0;
           visible: 1;
-          min: 220 42;
+          align: 0.5 0.0;
+		  min: 180 42; 
         }
      }
    }
@@ -196,7 +197,7 @@
                   rel2.relative: 0.8 0.5;
                   rel1.offset: 10 0;
                   rel2.offset: 20 3;
-                  min: SOURCE;
+				  min: SOURCE;		/*  min: 1 1;   */
                   max: 120 20;
                }
                /* Pressed state */
