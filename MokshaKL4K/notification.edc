@@ -1,0 +1,265 @@
+/* NOTIFICATION MAIN GROUP   */
+
+ group {
+   name: "e/modules/notification/main";
+
+   /* Declaring used images */
+   images {
+      image: "bd_white_border.png" COMP;
+      image: "close.png"   COMP;
+   }
+
+   /* Styles for title and text */
+   styles{
+      style { name: "notification_title_style";
+         base: "font=Play-Bold.ttf:style=Bold font_size=11 align=center color=#FFFFFF wrap=none text_class=notification_title";
+         tag: "u" ""; /* No underline, just in case */
+      }
+      style { name: "notification_body_style";
+         base: "font=Play-Regular.ttf font_size=10 align=left color=#FFFFFF wrap=word text_class=notification_body";
+         tag: "b" "+ font=Play-Regular.ttf:style=Bold";
+         tag: "i" "+ font=Play-Regular.ttf:style=Italic";
+      }
+    }
+
+   parts {
+      /* Background */
+      part { name: "background"; type: IMAGE; mouse_events: 0;
+         description {
+            state: "default" 0.0;
+            image.normal: "bd_white_border.png";
+			image.border: 15 15 15 15; /* Border edges in size 15 won't scale */
+            fill.smooth: 1;
+            rel1.relative: 0.0 0.0; /* Covers the entire area */
+            rel2.relative: 1.0 1.0;   
+            color: 255 255 255 220;   
+         }
+      }
+
+      /* app icon (on the left, like other themes) */
+      part {
+         name: "notification.swallow.app_icon"; type: SWALLOW;
+         mouse_events: 0;
+         description { state: "default" 0.0;
+            align: 0.0 0.5;
+            aspect: 1.0 1.0;
+            aspect_preference: BOTH;
+            rel1.offset: 12 12;
+            rel2.offset: 12 -13;
+            rel2.relative: 0.0 1.0;
+            min: 24 24;
+            fixed: 1 1;
+         }
+      }
+
+      /* Notif title */
+      part {
+         name: "notification.text.title"; type: TEXTBLOCK;
+         mouse_events: 0;
+         scale: 1;
+         description {
+            state: "default" 0.0;
+            rel1.to_x: "notification.swallow.app_icon";
+            rel1.relative: 1.0 0.0;
+            rel1.offset: 12 12;
+            rel2.relative: 1.0 0.0;
+            rel2.offset: -48 32;
+            align: 0.0 0.0;
+			min: 180 1;		
+            text {
+              style: "notification_title_style";
+              align: 0.0 0.5;
+              /* forcing notif width */
+              min: 1 1;
+            }
+         }
+      }
+
+      /* Text */
+      part {
+         name: "notification.textblock.message"; type: TEXTBLOCK;
+         mouse_events: 0;
+         scale: 1;
+         description { state: "default" 0.0;
+            rel1.to_x: "notification.swallow.app_icon";
+            rel1.to_y: "notification.text.title";
+            rel1.relative: 1.0 1.0;
+            rel1.offset: 12 6;
+            rel2.to_y: "notification.swallow.actions";
+            rel2.relative: 1.0 0.0;
+            rel2.offset: -16 -9; /* small gap between text and buttons */
+			min: 180 1;			
+            text {
+              style: "notification_body_style";
+              text: "";
+              ellipsis: -1;
+              min: 0 1; /* wrapping for text lines */
+            }
+          }
+        }
+
+      /* Invisible area for close button */
+
+      part {
+         name: "e.event.close"; type: RECT;
+         mouse_events: 1;
+         ignore_flags: ON_HOLD;
+         description {
+            state: "default" 0.0;
+            rel1.relative: 1.0 0.0;
+            rel1.offset: -40 10;
+            rel2.relative: 1.0 0.0;
+            rel2.offset: -10 40;
+            color: 0 0 0 0;
+         }
+      }
+
+      /* close button */
+      part {
+         name: "close_icon";
+         type: IMAGE;
+         mouse_events: 0;
+         description {
+            state: "default" 0.0;
+            rel1.to: "e.event.close";
+            rel2.to: "e.event.close";
+            image.normal: "close.png";
+            min: 18 18;
+            max: 18 18;
+         }
+         description {
+            state: "selected" 0.0;
+            inherit: "default" 0.0; 
+         }
+      }
+
+      /* Container for action buttons */
+
+      part {
+         name: "notification.swallow.actions";
+         type: SWALLOW;
+         mouse_events: 1;
+         description {
+           state: "default" 0.0;
+           visible: 0;
+           rel1.to_x: "notification.swallow.app_icon";
+           rel1.relative: 1.0 1.0;
+           rel1.offset: 12 -52;
+           rel2.relative: 1.0 1.0;
+           rel2.offset: -36 -12;
+	       min: 0 0;  /* no space taken if hidden */
+        }
+        description {
+          state: "visible" 0.0;
+          inherit: "default" 0.0;
+          visible: 1;
+          align: 0.5 0.0;
+		  min: 180 42; 
+        }
+     }
+   }
+
+   programs {
+      /* close button action */
+      program {
+         signal: "mouse,clicked,1";
+         source: "e.event.close";
+         action: SIGNAL_EMIT "notification,close" "";
+      }
+      /* Show actions */
+      program {
+         signal: "e,state,actions,show";
+         source: "e";
+         action: STATE_SET "visible" 0.0;
+         target: "notification.swallow.actions";
+      }
+      /* Hide actions */
+      program {
+         signal: "e,state,actions,hide";
+         source: "e";
+         action: STATE_SET "default" 0.0;
+         target: "notification.swallow.actions";
+      }
+     }
+   }
+
+    /* Notification actions group */
+
+    group {
+       name: "e/modules/notification/action";
+       parts {
+            part {
+               name: "act_btn";
+               type: GROUP;
+               source: "e/widgets/button";
+               description {
+                  state: "default" 0.0;
+                  rel1.relative: 0.2 0.2;
+                  rel2.relative: 0.8 0.5;
+                  rel1.offset: 10 0;
+                  rel2.offset: 20 3;
+				  min: SOURCE;		/*  min: 1 1;   */
+                  max: 120 20;
+               }
+               /* Pressed state */
+               description {
+                  state: "pressed" 0.0;
+                  inherit: "default" 0.0;
+                  rel1.offset: 11 1;
+                  rel2.offset: 21 4;
+                  /* making the button a bit darker */
+                  color: 200 200 200 255;
+               }
+            }
+
+          alias: "e.text.label" "act_btn:e.text.label";
+          part {
+             name: "event";
+             type: RECT;
+             scale: 1;
+             description {
+               state: "default" 0.0;
+               rel.to: "act_btn";
+               color: 0 0 0 0;
+               min: 40 20;
+            }
+          }
+          part {
+            name: "press_overlay";
+            type: RECT;
+            mouse_events: 0;
+            description {
+              state: "default" 0.0;
+              rel.to: "act_btn";
+              color: 0 0 0 0;
+              visible: 0;
+            }
+            description {
+              state: "pressed" 0.0;
+              inherit: "default" 0.0;
+              color: 0 0 0 60;
+              visible: 1;
+            }
+         }
+     }
+
+    programs {
+        program {
+           signal: "mouse,down,1";
+           source: "event";
+           action: STATE_SET "pressed" 0.0;
+           target: "press_overlay";
+        }
+        program {
+           signal: "mouse,down,1";
+           source: "event";
+           action: STATE_SET "pressed" 0.0;
+           target: "act_btn";
+        }
+        program {
+           signal: "mouse,clicked,1";
+           source: "event";
+           action: SIGNAL_EMIT "e,action,clicked" "e";
+        }
+    }
+ }
