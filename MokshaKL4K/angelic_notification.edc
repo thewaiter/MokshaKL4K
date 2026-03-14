@@ -14,35 +14,29 @@ group { name: "e/modules/notification/logo";
              rel2.relative: 0.8 1.15;
          }
       }
-      part 
-          {
-          name: "e.text.counter";
-          mouse_events: 0;
+      part { name: "e.text.counter"; mouse_events: 0;
           type: TEXT;
           scale: 1;
           effect: OUTLINE_SOFT_SHADOW;
-          description 
-          {
+          description { state: "default" 0.0;
             rel.to: "base";
             rel2.offset: 0 1;
-            state: "default" 0.0;
             color: 203 203 203 255;
             color3: 0 0 0 32;
             color_class: "module_label";
             visible: 1;
-            text 
-            {
+            text {
                 text: "";
                 font: "Sans:style=Bold";
                 size: 8;
                 min: 1 1;
                 align: 1.0 1.0;
                 ellipsis: -1;
-             }
             }
           }
+      }
    }
-   programs {  
+   programs {
     program
           {
            signal: "stop";
@@ -107,7 +101,7 @@ group { name: "e/modules/notification/logo";
          description {
             state: "default" 0.0;
             image.normal: "bd_white_border.png";
-			image.border: 15 15 15 15; /* Border edges in size 15 won't scale */
+            image.border: 15 15 15 15; /* Border edges in size 15 won't scale */
             fill.smooth: 1;
             rel1.relative: 0.0 0.0; /* Covers the entire area */
             rel2.relative: 1.0 1.0;   
@@ -144,7 +138,7 @@ group { name: "e/modules/notification/logo";
             rel2.relative: 1.0 0.0;
             rel2.offset: -48 32;
             align: 0.0 0.0;
-			min: 180 1;		
+            min: 180 1;
             text {
               style: "notification_title_style";
               align: 0.0 0.5;
@@ -342,7 +336,4 @@ group { name: "e/modules/notification/logo";
         }
     }
  }
-
-
-
 
